@@ -13,7 +13,7 @@ import { User } from './auth-form.interface';
   template: `
     <div>
       <form (ngSubmit)="onSubmit(form.value)" #form="ngForm">
-        <ng-content select="h3"></ng-content>
+        <h3>{{ title }}</h3>
         <label>
           Email address
           <input type="email" name="email" ngModel #email>
@@ -26,12 +26,14 @@ import { User } from './auth-form.interface';
         <auth-message 
           [style.display]="(showMessage ? 'inherit' : 'none')">
         </auth-message>
-        <ng-content select="button"></ng-content>
+        <button type="submit">{{title}}</button>
       </form>
     </div>
   `
 })
 export class AuthFormComponent implements AfterContentInit, AfterViewInit {
+
+  title = 'Login';
 
   showMessage: boolean;
 
