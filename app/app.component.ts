@@ -8,9 +8,11 @@ import { User } from './auth-form/auth-form.interface';
   selector: 'app-root',
   template: `
     <div>
-      <div #entry></div>
+      <ng-container
+        [ngTemplateOutlet]="tmpl">
+      </ng-container>
       <template #tmpl let-name let-location="location">
-        {{ name }}: {{ location }}
+        Ameet Swamy: Bangalore, India
       </template>
     </div>
   `
@@ -27,10 +29,10 @@ export class AppComponent implements AfterContentInit {
   ) {}
 
   ngAfterContentInit() {
-    this.entry.createEmbeddedView(this.tmpl, {
-      $implicit: 'Swamy Ameet',
-      location: 'Bangalore, India'
-    });
+    // this.entry.createEmbeddedView(this.tmpl, {
+    //   $implicit: 'Swamy Ameet',
+    //   location: 'Bangalore, India'
+    // });
     // const authFormFactory = this.resolver.resolveComponentFactory(AuthFormComponent);
     // this.entry.createComponent(authFormFactory);
     // this.component = this.entry.createComponent(authFormFactory, 0);
