@@ -9,15 +9,21 @@ import { User } from './auth-form/auth-form.interface';
   template: `
     <div>
       <ng-container
-        [ngTemplateOutlet]="tmpl">
+        [ngTemplateOutlet]="tmpl"
+        [ngTemplateOutletContext]="ctx">
       </ng-container>
       <template #tmpl let-name let-location="location">
-        Ameet Swamy: Bangalore, India
+        {{ name }} : {{ location }}
       </template>
     </div>
   `
 })
 export class AppComponent implements AfterContentInit {
+
+  ctx = {
+    $implicit: 'Ameet Swamy',
+    location: 'Bangalore, India'
+  }
 
   component: ComponentRef<AuthFormComponent>;
 
